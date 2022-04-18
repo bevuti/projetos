@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+config.vm.hostname = "bd01"
+config.vm.box = "centos/7"
+config.vm.network "private_network", ip: "192.168.2.4"
+config.vm.network "forwarded_port", guest:3306, host: 3306
+config.vm.provision "shell" , path: "provision.sh"
+   end
