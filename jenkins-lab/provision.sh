@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 sudo yum install epel-release -y
-sudo yum install wget git -y
+sudo yum install wget git unzip -y
 sudo wget --no-check-certificate -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum install jenkins -y
@@ -34,3 +34,14 @@ usermod -aG docker jenkins
 
 #hsvp
 #29f5a29445d2407d82d8e5d5672de477
+
+#instalação sonar scanner
+sudo su
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/
+mv /opt/sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
+chown -R jenkins:jenkins /opt/sonar-scanner
+echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install -y nodejs
+sudo systemctl daemon-reload
