@@ -31,3 +31,6 @@ usermod -aG docker jenkins
 #Comando para pegar senha jenkins
 # cat /var/lib/jenkins/secrets/initialAdminPassword
 # e3acd4b33123462a9096f072dd4f8e7c
+
+#hsvp
+#29f5a29445d2407d82d8e5d5672de477
