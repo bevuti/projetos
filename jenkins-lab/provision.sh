@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 sudo yum install epel-release -y
-sudo yum install wget -y
+sudo yum install wget git -y
 sudo wget --no-check-certificate -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum install jenkins -y
@@ -25,3 +25,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 echo "------------------- COMPOSE PASSOU -------------------------------"
 sudo systemctl daemon-reload
+usermod -aG docker jenkins
+
+
+#Comando para pegar senha jenkins
+# cat /var/lib/jenkins/secrets/initialAdminPassword
+# e3acd4b33123462a9096f072dd4f8e7c
